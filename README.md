@@ -17,9 +17,9 @@ Adicionalmente, múltiples operaciones dependían completamente de la intervenci
 
 Durante la operación diaria se identificaron problemas como:
 
-	•	Consultas SQL utilizadas para reportes fiscales sin validación efectiva de permisos
-	•	Solicitudes urgentes y repetitivas para ajustes administrativos menores
-	•	Reprocesamientos fiscales simples que requerían intervención directa del soporte
+- Consultas SQL utilizadas para reportes fiscales sin validación efectiva de permisos
+- Solicitudes urgentes y repetitivas para ajustes administrativos menores
+- Reprocesamientos fiscales simples que requerían intervención directa del soporte
 
 Estos factores generaban una carga operativa constante, aumentaban el riesgo de exposición de información sensible y reducían la capacidad del equipo para enfocarse en incidencias de mayor valor.
 
@@ -43,11 +43,11 @@ A pesar de ser una acción trivial a nivel técnico, su ejecución manual genera
 
 Para abordar estos problemas, se realizó un análisis detallado de la base de datos en SQL Server con el objetivo de comprender:
 
-	•	La estructura y relaciones del modelo de datos fiscal
-	•	La forma en que los permisos de usuario estaban definidos y relacionados
-	•	La clasificación de documentos fiscales por tipo (emitidos, recibidos, nómina)
-	•	Reglas de negocio implícitas no documentadas formalmente
-	•	Riesgos asociados a automatizar procesos sin validaciones estrictas
+- La estructura y relaciones del modelo de datos fiscal
+- La forma en que los permisos de usuario estaban definidos y relacionados
+- La clasificación de documentos fiscales por tipo (emitidos, recibidos, nómina)
+- Reglas de negocio implícitas no documentadas formalmente
+- Riesgos asociados a automatizar procesos sin validaciones estrictas
 
 El análisis implicó exploración de tablas, identificación de relaciones no evidentes y validación de variables de entorno disponibles durante la ejecución de reportes y procesos administrativos.
 
@@ -61,10 +61,10 @@ Este enfoque garantizó consistencia, control de acceso y reutilización, reduci
 
 Se implementó un mecanismo para validar dinámicamente los permisos del usuario que ejecuta reportes fiscales:
 
-	•	Identificación del usuario mediante variables de entorno
-	•	Resolución de permisos según rol y tipo de documento fiscal
-	•	Encapsulación de la lógica en funciones reutilizables
-	•	Filtrado de resultados para permitir solo facturas emitidas, recibidas o de nómina según autorización
+- Identificación del usuario mediante variables de entorno
+- Resolución de permisos según rol y tipo de documento fiscal
+- Encapsulación de la lógica en funciones reutilizables
+- Filtrado de resultados para permitir solo facturas emitidas, recibidas o de nómina según autorización
 
 Esto permitió mantener la flexibilidad de los reportes sin comprometer la confidencialidad de la información fiscal.
 
@@ -72,11 +72,11 @@ Esto permitió mantener la flexibilidad de los reportes sin comprometer la confi
 
 Se diseñó una opción de autoservicio que permitió a los clientes realizar ajustes administrativos sin intervención directa del soporte:
 
-	•	Interfaz con acciones limitadas y controladas
-	•	Validaciones estrictas en procedimientos almacenados
-	•	Prevención de estados fiscales inválidos
-	•	Bitácora de auditoría de cada ajuste
-	•	Límites operativos para evitar uso indebido
+- Interfaz con acciones limitadas y controladas
+- Validaciones estrictas en procedimientos almacenados
+- Prevención de estados fiscales inválidos
+- Bitácora de auditoría de cada ajuste
+- Límites operativos para evitar uso indebido
 
 Esta solución eliminó solicitudes urgentes recurrentes, manteniendo el control fiscal del sistema.
 
@@ -84,9 +84,9 @@ Esta solución eliminó solicitudes urgentes recurrentes, manteniendo el control
 
 Se habilitó una opción para permitir el reprocesamiento de documentos fiscales bajo condiciones seguras:
 
-	•	Selección acotada por periodo fiscal
-	•	Ejecución controlada mediante procedimientos almacenados
-	•	Sin impacto en integridad fiscal ni registros históricos
+- Selección acotada por periodo fiscal
+- Ejecución controlada mediante procedimientos almacenados
+- Sin impacto en integridad fiscal ni registros históricos
 
 Esto eliminó por completo una categoría específica de tickets recurrentes.
 
@@ -94,17 +94,17 @@ Esto eliminó por completo una categoría específica de tickets recurrentes.
 
 La implementación de estas soluciones generó mejoras medibles:
 
-	•	Eliminación total de ciertos tickets recurrentes
-	•	Reducción aproximada del volumen mensual de soporte entre un 6% y 8%
-	•	Menor presión operativa en periodos críticos
-	•	Mayor autonomía de los usuarios
-	•	Mejora en la seguridad y control del acceso a información fiscal
+- Eliminación total de ciertos tickets recurrentes
+- Reducción aproximada del volumen mensual de soporte entre un 6% y 8%
+- Menor presión operativa en periodos críticos
+- Mayor autonomía de los usuarios
+- Mejora en la seguridad y control del acceso a información fiscal
   
 ### Aprendizajes clave
-	•	Los problemas fiscales críticos suelen originarse por falta de control en el acceso a datos
-	•	SQL Server es una herramienta efectiva para aplicar reglas fiscales cuando se diseña con criterio
-	•	Reducir dependencia del soporte genera más valor que añadir nuevas funcionalidades
-	•	La validación y auditoría son fundamentales en sistemas fiscales
+- Los problemas fiscales críticos suelen originarse por falta de control en el acceso a datos
+- SQL Server es una herramienta efectiva para aplicar reglas fiscales cuando se diseña con criterio
+- Reducir dependencia del soporte genera más valor que añadir nuevas funcionalidades
+- La validación y auditoría son fundamentales en sistemas fiscales
   
 ### Notas de confidencialidad
 
@@ -131,9 +131,9 @@ Also, several operational processes still relied entirely on manual support inte
 
 Daily operations revealed issues such as:
 
-	•	SQL-based fiscal reports executed without enforcing user permissions
-	•	Recurrent urgent requests for minor administrative adjustments
-	•	Simple fiscal reprocessing tasks requiring direct support involvement
+- SQL-based fiscal reports executed without enforcing user permissions
+- Recurrent urgent requests for minor administrative adjustments
+- Simple fiscal reprocessing tasks requiring direct support involvement
 
 These factors created constant operational load, increased the risk of sensitive data exposure, and limited the team’s ability to focus on higher-value issues.
 
@@ -157,11 +157,11 @@ Despite being technically trivial, these actions generated recurring tickets due
 
 To address these issues, a detailed analysis of the SQL Server database was conducted to understand:
 
-	•	The structure and relationships of the fiscal data model
-	•	How user permissions were defined and linked
-	•	Classification of fiscal documents (issued, received, payroll)
-	•	Implicit business rules not formally documented
-	•	Risks associated with automation without strict validation
+- The structure and relationships of the fiscal data model
+- How user permissions were defined and linked
+- Classification of fiscal documents (issued, received, payroll)
+- Implicit business rules not formally documented
+- Risks associated with automation without strict validation
 
 This required exploring database tables, identifying non-obvious relationships, and validating environment variables available during report execution and administrative processes.
 
@@ -175,10 +175,10 @@ This approach ensured consistency, access control, and reusability, reducing rel
 
 A mechanism was implemented to dynamically validate the permissions of users executing fiscal reports:
 
-	•	User identification through environment variables
-	•	Permission resolution based on role and fiscal document type
-	•	Encapsulation of logic into reusable functions
-	•	Result filtering to allow access only to issued, received, or payroll invoices as authorized
+- User identification through environment variables
+- Permission resolution based on role and fiscal document type
+- Encapsulation of logic into reusable functions
+- Result filtering to allow access only to issued, received, or payroll invoices as authorized
 
 This preserved reporting flexibility while maintaining fiscal data confidentiality.
 
@@ -186,11 +186,11 @@ This preserved reporting flexibility while maintaining fiscal data confidentiali
 
 A controlled self-service option was designed to allow clients to perform administrative adjustments without direct support intervention:
 
-	•	Limited and controlled actions
-	•	Strict validation via stored procedures
-	•	Prevention of invalid fiscal states
-	•	Audit logging for all adjustments
-	•	Operational limits to prevent misuse
+- Limited and controlled actions
+- Strict validation via stored procedures
+- Prevention of invalid fiscal states
+- Audit logging for all adjustments
+- Operational limits to prevent misuse
 
 This eliminated recurring urgent requests while preserving fiscal control.
 
@@ -198,9 +198,9 @@ This eliminated recurring urgent requests while preserving fiscal control.
 
 An option was introduced to allow reprocessing of fiscal documents under controlled conditions:
 
-	•	Time-bound fiscal period selection
-	•	Execution via controlled stored procedures
-	•	No impact on fiscal integrity or historical records
+- Time-bound fiscal period selection
+- Execution via controlled stored procedures
+- No impact on fiscal integrity or historical records
 
 This fully eliminated a specific category of recurring support tickets.
 
@@ -208,17 +208,17 @@ This fully eliminated a specific category of recurring support tickets.
 
 These solutions produced measurable improvements:
 
-	•	Complete elimination of specific recurring support tickets
-	•	Approximate 6–8% monthly reduction in support volume
-	•	Reduced operational pressure during critical periods
-	•	Increased user autonomy
-	•	Improved security and control over fiscal data access
+- Complete elimination of specific recurring support tickets
+- Approximate 6–8% monthly reduction in support volume
+- Reduced operational pressure during critical periods
+- Increased user autonomy
+- Improved security and control over fiscal data access
 
 ### Key Learnings
-	•	Critical fiscal issues often stem from insufficient data access control
-	•	SQL Server is effective for enforcing fiscal rules when designed thoughtfully
-	•	Reducing support dependency delivers more value than adding features
-	•	Validation and auditability are essential in fiscal systems
+- Critical fiscal issues often stem from insufficient data access control
+- SQL Server is effective for enforcing fiscal rules when designed thoughtfully
+- Reducing support dependency delivers more value than adding features
+- Validation and auditability are essential in fiscal systems
 
 ### Notes on Confidentiality
 This repository documents the approach, analysis, and design of the implemented solutions.
